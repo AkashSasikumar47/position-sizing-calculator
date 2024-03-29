@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { userSignOut } from "../action";
+import { signOutAPI } from "../action";
+import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-const Headercopy = () => {
+function HeaderCopy(props) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -10,6 +12,7 @@ const Headercopy = () => {
 
     return (
         <div>
+            {!props.user && <Redirect to="/" />}
             <header className="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b text-sm py-2.5 sm:py-4 dark:bg-slate-900 dark:border-gray-700">
                 <nav
                     className="max-w-7xl flex basis-full items-center w-full mx-auto px-4 sm:px-6 lg:px-8"
@@ -120,7 +123,7 @@ const Headercopy = () => {
                                                     className="w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
                                                     onClick={() => {
 														setIsDropdownOpen(false);
-														window.location.href = '/profile';
+                                                        <Redirect to="/profile" />;
 													}}
                                                 >
                                                     Edit Profile
@@ -129,7 +132,7 @@ const Headercopy = () => {
 											<li>
                                                 <button
                                                     className="w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
-                                                    onClick={() => userSignOut()}
+                                                    onClick={props.signOut}
                                                 >
                                                    Sign Out
                                                 </button>
@@ -187,4 +190,14 @@ const Headercopy = () => {
     );
 };
 
-export default Headercopy;
+const mapStateToProps = (state) => {
+	return {
+		user: state.userState.user,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	signOut: () => dispatch(signOutAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderCopy);

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { userSignOut } from "../action";
+import { signOutAPI } from "../action";
 
 const Container = styled.div`
 	background-color: #fff;
@@ -276,7 +276,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	signOut: () => dispatch(userSignOut()),
+	signOut: () => dispatch(signOutAPI()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

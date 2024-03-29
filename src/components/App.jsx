@@ -21,10 +21,9 @@ function App(props) {
 				<Switch>
 
 					<Route exact path="/">
-						<Login />
+						<Logincopy />
 					</Route>
 					<Route path="/feed">
-						<Logincopy />
 						<Headercopy />
 						<Homecopy />
 

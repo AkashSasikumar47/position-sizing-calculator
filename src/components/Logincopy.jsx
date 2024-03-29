@@ -1,8 +1,12 @@
 import React from 'react';
+import { signInAPI } from '../action';
+import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
-const LoginCopy = () => {
+function LoginCopy(props) {
 	return (
 		<>
+			{props.user && <Redirect to="/feed" />}
 			<section className="bg-white">
 				<div className="lg:grid lg:min-h-screen lg:grid-cols-12">
 					<section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
@@ -115,6 +119,7 @@ const LoginCopy = () => {
 									<button
 										type="button"
 										className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-2 focus:outline-none focus:shadow-outline"
+										onClick={props.signIn}
 									>
 										Sign In with Google
 									</button>
@@ -128,4 +133,14 @@ const LoginCopy = () => {
 	);
 };
 
-export default LoginCopy;
+const mapStateToProps = (state) => {
+	return {
+		user: state.userState.user,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	signIn: () => dispatch(signInAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginCopy);
