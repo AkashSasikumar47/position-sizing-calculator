@@ -1,9 +1,29 @@
-import React from 'react';
-import { signInAPI } from '../action';
+import React, { useState } from 'react';
+import { signInAPI, signInWithEmailAndPassword } from '../action';
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 function LoginCopy(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSignInWithEmailAndPassword = (event) => {
+        event.preventDefault();
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!email || !emailRegex.test(email)) {
+			alert("Please enter a valid email address.");
+			return;
+		}
+
+		if (!password || password.length < 8) {
+			alert("Please enter a valid password.");
+			return;
+		}
+
+        props.signInWithEmailAndPassword(email, password);
+    };
+
 	return (
 		<>
 			{props.user && <Redirect to="/feed" />}
@@ -79,6 +99,7 @@ function LoginCopy(props) {
 										name="email"
 										placeholder="Enter your email"
 										className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+										onChange={(e) => setEmail(e.target.value)}
 									/>
 									<p className="text-gray-500 text-xs italic mt-1">
 										We'll never share your email with anyone else.
@@ -97,6 +118,7 @@ function LoginCopy(props) {
 										name="password"
 										placeholder="Enter your password"
 										className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+										onChange={(e) => setPassword(e.target.value)}
 									/>
 									<p className="text-gray-500 text-xs italic mt-1">
 										Make sure it's at least 8 characters including a number and a lowercase
@@ -110,6 +132,7 @@ function LoginCopy(props) {
 									<button
 										type="submit"
 										className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+										onClick={handleSignInWithEmailAndPassword}
 									>
 										Sign In
 									</button>
@@ -119,7 +142,7 @@ function LoginCopy(props) {
 									<button
 										type="button"
 										className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-2 focus:outline-none focus:shadow-outline"
-										onClick={props.signIn}
+										onClick={props.signInWithGoogle}
 									>
 										Sign In with Google
 									</button>
@@ -140,7 +163,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	signIn: () => dispatch(signInAPI()),
+	signInWithGoogle: () => dispatch(signInAPI()),
+	signInWithEmailAndPassword: (email, password) => dispatch(signInWithEmailAndPassword(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginCopy);

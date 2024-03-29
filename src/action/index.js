@@ -33,6 +33,38 @@ export function getUserAuth() {
 	};
 }
 
+export function signInWithEmailAndPassword(email, password) {
+    return (dispatch) => {
+        auth.signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                dispatch(setUser(user));
+            })
+            .catch((error) => {
+                let errorMessage;
+                switch (error.code) {
+                    case "auth/invalid-email":
+                        errorMessage = "Invalid email address.";
+                        break;
+                    case "auth/user-disabled":
+                        errorMessage = "Your account has been disabled.";
+                        break;
+                    case "auth/internal-error":
+						errorMessage = "An internal error occurred. Please try again later.";
+						break;
+                    case "auth/wrong-password":
+                        errorMessage = "Invalid email or password.";
+                        break;
+                    default:
+                        errorMessage = "An error occurred. Please try again later.";
+                }
+                alert(errorMessage);
+				console.log(error);
+            })
+		;
+	}
+}
+
 export function signInAPI() {
 	return (dispatch) => {
 		auth.signInWithPopup(provider)
