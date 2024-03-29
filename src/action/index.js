@@ -41,12 +41,16 @@ export function signInAPI() {
 	};
 }
 
-export function signOutAPI() {
-	return (dispatch) => {
-		auth.signOut()
-			.then(() => dispatch(setUser(null)))
-			.catch((err) => alert(err.message));
-	};
+export function userSignOut() {
+
+    auth.signOut()
+        .then(() => {
+            console.log("Sign out successful");
+            window.location.href = '/';
+        })
+        .catch((err) => {
+            console.log(err.message);
+        });
 }
 
 export function postArticleAPI(payload) {
