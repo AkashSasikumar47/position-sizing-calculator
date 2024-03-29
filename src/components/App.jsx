@@ -24,7 +24,7 @@ function App(props) {
 						<Login />
 					</Route>
 					<Route path="/feed">
-					
+						<Logincopy />
 						<Headercopy />
 						<Homecopy />
 
