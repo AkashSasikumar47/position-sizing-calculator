@@ -64,7 +64,6 @@ build/
 *.class
 
 # Compiled TypeScript
-*.js
 *.js.map
 
 # Temporary files
