@@ -6,6 +6,10 @@ import { useEffect } from "react";
 import { getUserAuth } from "../action";
 import { connect } from "react-redux";
 
+import Logincopy from "./Logincopy";
+import Headercopy from "./Headercopy";
+import Homecopy from "./Homecopy";
+
 function App(props) {
 	useEffect(() => {
 		props.getUserAuth();
@@ -15,10 +19,16 @@ function App(props) {
 		<div className="App">
 			<Router>
 				<Switch>
+
 					<Route exact path="/">
 						<Login />
 					</Route>
 					<Route path="/feed">
+
+						<Headercopy />
+						<Homecopy />
+
+
 						<Header />
 						<Home />
 					</Route>
