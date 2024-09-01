@@ -1,26 +1,50 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TimelineInfo from './TimelineInfo';
+import TimelineInfo from './timeline_info';
+import './timelinestyles.css';
+import { useInView } from 'react-intersection-observer';
 
-const Timeline = () => {
+const Timeline: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationComplete }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showGenerating, setShowGenerating] = useState(true);
+  const [titleGenOver, setTitleGenOver] = useState(false);
+  const [contentGenOver, setContentGenOver] = useState(false);
+  const [showFlow, setShowFlow] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const { ref: inViewRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.7,
+  });
 
   const TimelineData = [
     {
-      title: 'Welcome & Orientation',
-      description: "Begin your journey with a warm welcome to IEEE SRM SB, where you will discover the perks of membership. We will provide you with essential tips on building a strong professional profile using tools like LinkedIn and GitHub, and introduce you to exciting tech domains like Web Development, Machine Learning, and more."
+      title: 'Inaugural Programs (9:00 am - 10:00 am)',
+      description: "Kick off the day with a welcome speech followed by an introduction to our keynote speaker. This session will set the tone for the event and give you a glimpse of what to expect."
     },
     {
-      title: 'Introduction to GenAI',
-      description: 'Dive into the world of Generative AI (GenAI) as we explore its fascinating history and real-world applications. Learn the basics of Machine Learning and get hands-on experience with Python programming, giving you a strong foundation in this cutting-edge field.',
+      title: 'Speaker Session 1 (10:00 am - 11:30 am)',
+      description: 'Engage in the first speaker session where industry experts will share insights and knowledge on cutting-edge topics in technology. This session will be an eye-opener for all tech enthusiasts.'
     },
     {
-      title: 'Project-Based Learning',
-      description: 'Put your new knowledge into practice by working on a project using prebuilt models. Then, challenge yourself with a more advanced project, such as creating an image recognition system. These activities are designed to boost your confidence and skills in applying what you have learned.',
+      title: 'Break (11:30 am - 11:45 am)',
+      description: 'Take a short break to recharge with refreshments before diving into the next session.'
     },
     {
-      title: 'Interactive Session & Feedback',
-      description: 'Wrap up the day with a fun interactive session to connect with your peers and solidify what you’ve learned. Before you go, share your thoughts and suggestions through a feedback form to help us tailor future events to your needs.',
+      title: 'Speaker Session 2 (11:45 am - 1:00 pm)',
+      description: 'Join the second speaker session, which will delve deeper into specific tech domains and provide practical advice for budding professionals.'
+    },
+    {
+      title: 'Lunch Break & Ice Breaker (1:00 pm - 2:00 pm)',
+      description: "Enjoy a lunch break to relax and network with fellow attendees. The break will conclude with an ice-breaker activity to foster connections."
+    },
+    {
+      title: 'Speaker Session 3 (2:00 pm - 3:30 pm)',
+      description: 'Participate in the final speaker session of the day, featuring an in-depth discussion on advanced topics and future trends in technology.'
+    },
+    {
+      title: 'Orientation & IEEE Promotion (3:30 pm - 5:00 pm)',
+      description: 'Wrap up the event with an orientation session covering LinkedIn, GitHub, and resume building. Learn about IEEE promotion and recruitment opportunities to boost your professional journey.'
     },
   ];
 
@@ -41,40 +65,155 @@ const Timeline = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (inView) {
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+      }, 1000);
+
+      const showContentTimer = setTimeout(() => {
+        setShowGenerating(false);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(showContentTimer);
+      };
+    }
+  }, [inView]);
+
+  useEffect(() => {
+    if (showFlow) {
+      onGenerationComplete();
+    }
+  }, [showFlow]);
+
   return (
-    <section>
-      <div ref={containerRef} className="bg-black max-w-5xl px-4 xl:px-0 py-10 lg:pt-20 lg:pb-20 mx-auto">
-        <div className="max-w-3xl mb-10 lg:mb-14">
-          <h2 className="text-white font-semibold text-2xl md:text-4xl md:leading-tight">
-            Timeline
-          </h2>
-          <p className="mt-1 text-neutral-400">
-            Welcome to a day packed with learning, exploration, and hands-on experience! Whether you’re just starting your journey or looking to deepen your understanding of the latest technologies, this event is designed to inspire and empower you. From foundational insights to practical applications, each session is crafted to equip you with the tools and knowledge you need to thrive in today’s tech landscape. Get ready to dive into the world of Generative AI, tackle exciting projects, and connect with like-minded peers. Let’s make the most of this opportunity to grow, innovate, and shape your future!
-          </p>
-        </div>
+    <section ref={inViewRef}>
+      <div className="gradient-border-container mx-auto max-w-5xl px-4 xl:px-0 py-5 lg:py-10">
+        <div className="gradient-border-wrapper">
+          <div ref={containerRef} className="gradient-border-content">
+            {showGenerating ? (
+              <div className={`fade-out ${fadeOut ? 'fade-out-active' : ''}`}>
+                <p className='text-white text-2xl md:text-3xl tracking-wider font-bold text-center font-roboto'>
+                  Alright Lucia, What will be the flow of events?
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
 
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
+                  <GenContent 
+                    className="text-neonCyan font-semibold text-2xl md:text-4xl md:leading-tight" 
+                    showGenerating={showGenerating} 
+                    text="Tiimeline" 
+                    speed={20}
+                    complete={() => {setTitleGenOver(true)}}
+                  />
 
-          <div>
-            <div className="mb-4">
-              <h3 className="text-brightYellow text-xs text-cyan-400 font-medium uppercase">Flow of Events</h3>
-            </div>
+                  {titleGenOver && (<GenContent 
+                    className="mt-2 text-neutral-400" 
+                    showGenerating={showGenerating} 
+                    text="Exxperience a day of focused learning and hands-on tech exploration. Each session is crafted to empower you with practical skills and insights. Let's dive in!" 
+                    speed={20}
+                    complete={() => {setContentGenOver(true)}}
+                  />)}
+                </div>
 
-            {TimelineData.map((timeline, index) => (
-              <TimelineInfo
-                key={index}
-                index={index}
-                title={timeline.title}
-                description={timeline.description}
-                isOpen={openIndex === index}
-                onToggle={() => handleToggle(index)}
-              />
-            ))}
+                {contentGenOver && !showFlow &&(
+                  <GenContent 
+                    className="text-neonMagenta text-sm font-medium text-center mb-6" 
+                    showGenerating={showGenerating} 
+                    text="Gaatherting the flow of events..." 
+                    speed={25}
+                    complete={() => {
+                      const timer = setTimeout(() => {
+                        setShowFlow(true);
+
+                      }, 2000);
+                      return () => clearTimeout(timer);
+                    }}
+                  />
+                )}
+
+                {showFlow && (<div className="flex justify-center">
+                  <div className="w-full max-w-3xl">
+                    <div className="mb-6">
+                      <h3 className="text-neonMagenta text-sm font-medium uppercase text-center">
+                        Flow of Events
+                      </h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      {TimelineData.map((timeline, index) => (
+                        <TimelineInfo
+                          key={index}
+                          index={index}
+                          title={timeline.title}
+                          description={timeline.description}
+                          isOpen={openIndex === index}
+                          onToggle={() => handleToggle(index)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>)}
+              </>
+            )}
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Timeline;
+
+
+interface GenContentProps {
+  className: string;
+  showGenerating: boolean;
+  text: string;
+  speed: number;
+  complete: VoidFunction;
+}
+
+const GenContent: React.FC<GenContentProps> = ({ className, showGenerating, text, speed, complete }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [completed, setCompleted] = useState(false);
+
+  useEffect(() => {
+      if (!showGenerating) {
+        let currentIndex = 0;
+        const intervalId = setInterval(() => {
+
+
+          if (currentIndex < text.length - 1) {
+            setDisplayedText((prev) => prev + text[currentIndex]);
+            currentIndex++;
+          }
+          
+          else if (currentIndex === text.length - 1) {
+            clearInterval(intervalId);
+            setCompleted(true);
+            complete();
+          }
+        }, speed);
+    
+        return () => clearInterval(intervalId);
+      } else {
+        setDisplayedText('');
+      }
+    }, [showGenerating, text]);
+
+  return (
+    <div
+      className={className}
+    >
+      {showGenerating 
+          ? (<span>⚪</span>)
+          : (<div>{displayedText}{!completed ? <span>⚪</span> : null}</div>)
+      }
+    </div>
+  );
+};
