@@ -66,11 +66,14 @@ const FAQ = () => {
           <div className="mockup-phone mx-auto">
             <div className="camera" />
             <div className="display">
-              <div className="artboard artboard-demo phone-1 bg-gray-800">
+              <div
+                className="artboard artboard-demo phone-1"
+                style={{ backgroundImage: "url('/assets/Img/cyberpunk.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+              >
                 {selectedFAQ ? (
                   <Chat question={selectedFAQ.question} answer={selectedFAQ.answer} key={0} />
                 ) : (
-                  <div className="text-white text-center p-4">Select a question to see the answer.</div>
+                  <div className="bg-gray-800 rounded-xl text-white text-center p-4">Select a question to see the answer.</div>
                 )}
               </div>
             </div>

@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Hero from './components/Hero/Hero';
 import EventCountdown from './components/EventCountdown/EventCountdown';
 import AboutUs from './components/AboutUs/AboutUs';
+import EventVideo from './components/EventVideo/EventVideo';
 import EventHighlights from './components/EventHighlights/EventHighlights';
 import Mentors from './components/Mentors/Mentors';
 import FAQ from './components/FAQ/FAQ';
@@ -16,7 +17,7 @@ import '../app/globals.css';
 
 const HomePage: React.FC = () => {
   return (
-    <div>
+    <div className="bg-black">
       <Head>
         <title>E-VOLVE | IEEE SRMIST</title>
         <meta name="description" content="Explore the future of artificial intelligence with hands-on experience in Generative AI. Join the GenAI Workshop at IEEE SRMIST to learn, innovate, and create AI-powered solutions." />
@@ -27,6 +28,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <EventCountdown />
       <AboutUs />
+      <EventVideo />
       <EventHighlights />
       <Mentors />
       <FAQ />
