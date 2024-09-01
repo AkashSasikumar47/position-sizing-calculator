@@ -14,7 +14,7 @@ const CTA = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
             transition={{ duration: 1 }}
-            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10"
+            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8"
         >
             <div className="flex flex-col overflow-hidden bg-black sm:flex-row md:h-80">
                 <div className="flex w-full flex-col items-center text-center sm:w-1/2 lg:w-2/5 sm:text-left sm:items-start">

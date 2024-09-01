@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10">
+        <div className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8">
             <div className="group aspect-w-16 aspect-h-9 relative overflow-hidden">
                 <img
                     className="w-full object-cover rounded-xl lg:rounded-xl transition-transform transform group-hover:scale-105"

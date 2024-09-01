@@ -51,7 +51,7 @@ const AnimatedEventCountdown = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ duration: 0.5 }}
-            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10"
+            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8"
         >
             <div className="mx-auto items-center justify-center text-center">
                 <h2 className="mb-4 md:mb-6 font-sans font-bold text-white text-2xl sm:text-4xl">

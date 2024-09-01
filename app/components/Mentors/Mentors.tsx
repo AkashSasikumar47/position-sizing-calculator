@@ -25,7 +25,7 @@ const AnimatedMentors = () => {
             animate={inView ? "visible" : "hidden"}
             variants={mentorVariants}
             transition={{ duration: 1 }}
-            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10"
+            className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8"
         >
             <link
                 rel="stylesheet"

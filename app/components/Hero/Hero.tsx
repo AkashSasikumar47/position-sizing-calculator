@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 const Hero: React.FC = () => {
     return (
         <header
-            className="relative w-full h-screen bg-cover bg-center"
+            className="relative w-full h-screen bg-cover bg-center mb-8"
             style={{ backgroundImage: "url('/assets/Img/hero_section.jpg')" }}
         >
             <Navbar />
