@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Hero from './components/Hero/Hero';
 import EventCountdown from './components/EventCountdown/EventCountdown';
 import AboutUs from './components/AboutUs/AboutUs';
+import AboutEvent from './components/AboutEvent/AboutEvent';
 import EventVideo from './components/EventVideo/EventVideo';
 import EventHighlights from './components/EventHighlights/EventHighlights';
 import Mentors from './components/Mentors/Mentors';
@@ -28,6 +29,7 @@ const HomePage: React.FC = () => {
       <Hero />
       <EventCountdown />
       <AboutUs />
+      <AboutEvent />
       <EventVideo />
       <EventHighlights />
       <Mentors />
