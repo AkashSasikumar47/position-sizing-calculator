@@ -8,6 +8,7 @@ import EventCountdown from './components/EventCountdown/EventCountdown';
 import AboutUs from './components/AboutUs/AboutUs';
 import AboutEvent from './components/AboutEvent/AboutEvent';
 import EventVideo from './components/EventVideo/EventVideo';
+import Speaker from './components/Speaker/Speaker';
 import EventHighlights from './components/EventHighlights/EventHighlights';
 import Mentors from './components/Mentors/Mentors';
 import FAQ from './components/FAQ/FAQ';
@@ -31,6 +32,7 @@ const HomePage: React.FC = () => {
       <AboutUs />
       <AboutEvent />
       <EventVideo />
+      <Speaker onGenerationComplete={() => {}}/>
       <EventHighlights />
       <Mentors />
       <FAQ />
