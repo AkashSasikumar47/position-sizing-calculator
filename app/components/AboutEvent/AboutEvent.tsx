@@ -69,10 +69,10 @@ const AboutEvent: React.FC = () => {
       <div className="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
         <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
           <h2 className="mb-4 md:mb-6 font-sans font-bold text-white text-2xl sm:text-4xl">
-            Hey Lucia, Can you tell us more about E-VOLVE?
+            About E-VOLVE
           </h2>
           <h4 className="max-w-screen-sm mx-auto font-sans font-base text-neutral-400 text-sm sm:text-lg">
-            Sure! Here is some information about the event. At E-volve, you'll delve into the theoretical foundations of Generative AI, exploring its principles, methodologies, and the latest advancements in the field. This session is perfect for those looking to deepen their understanding of AI concepts and its applications.
+            At E-volve, you'll delve into the theoretical foundations of Generative AI, exploring its principles, methodologies, and the latest advancements in the field. This session is perfect for those looking to deepen their understanding of AI concepts and its applications.
           </h4>
           <nav
             className="grid gap-4 mt-5 md:mt-10"
