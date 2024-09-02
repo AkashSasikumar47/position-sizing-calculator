@@ -5,15 +5,14 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-// Import components
 import Hero from './components/Hero/Hero';
 import EventCountdown from './components/EventCountdown/EventCountdown';
 import AboutUs from './components/AboutUs/AboutUs';
 import AboutEvent from './components/AboutEvent/AboutEvent';
 import EventVideo from './components/EventVideo/EventVideo';
 import Speaker from './components/Speaker/Speaker';
-import EventHighlights from './components/EventHighlights/EventHighlights';
 import Timeline from './components/Timeline/Timeline';
+import EventHighlights from './components/EventHighlights/EventHighlights';
 import Mentors from './components/Mentors/Mentors';
 import FAQ from './components/FAQ/FAQ';
 import CTA from './components/CTA/CTA';
@@ -22,11 +21,10 @@ import Footer from './components/Footer/Footer';
 import '../app/globals.css';
 
 const HomePage: React.FC = () => {
-  // State to manage component generation
+
   const [isSpeakersGenerated, setIsSpeakersGenerated] = useState(false);
   const [isTimelineGenerated, setIsTimelineGenerated] = useState(false);
 
-  // InView hooks for each section
   const { ref: countdownRef, inView: isCountdownVisible } = useInView({ triggerOnce: true, threshold: 0.4 });
   const { ref: aboutUsRef, inView: isAboutUsVisible } = useInView({ triggerOnce: true, threshold: 0.4 });
   const { ref: aboutEventRef, inView: isAboutEventVisible } = useInView({ triggerOnce: true, threshold: 0.4 });
@@ -116,15 +114,6 @@ const HomePage: React.FC = () => {
       {isSpeakersGenerated && (
         <>
           <motion.div
-            ref={timelineRef}
-            initial="hidden"
-            animate={isTimelineVisible ? "visible" : "hidden"}
-            variants={slideInFromBottom}
-          >
-            <EventHighlights />
-          </motion.div>
-          
-          <motion.div
             ref={highlightsRef}
             initial="hidden"
             animate={isHighlightsVisible ? "visible" : "hidden"}
@@ -137,6 +126,15 @@ const HomePage: React.FC = () => {
 
       {isTimelineGenerated && (
         <>
+          <motion.div
+            ref={timelineRef}
+            initial="hidden"
+            animate={isTimelineVisible ? "visible" : "hidden"}
+            variants={slideInFromBottom}
+          >
+            <EventHighlights />
+          </motion.div>
+
           <motion.div
             ref={mentorsRef}
             initial="hidden"

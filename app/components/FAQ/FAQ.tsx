@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './anime.css';
-import Query from './query';
+import Query from './Query';
 import Chat from './chat';
 
 const FAQ = () => {
