@@ -31,7 +31,7 @@ const Navbar = () => {
             <nav className="relative max-w-screen-2xl w-full py-2.5 px-5 flex md:items-center justify-between md:py-0 mx-2 lg:mx-auto">
                 <div className="flex items-center justify-between">
                     <a href="/" className="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
-                        <img src="/assets/Logo/IEEE-LOGO.svg" alt="Gen_AI logo" className="h-8 md:h-12" />
+                        <img src="/assets/Logo/IEEE-Logo.svg" alt="Gen_AI logo" className="h-8 md:h-12" />
                     </a>
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-end py-2 md:py-0 md:ps-7">
