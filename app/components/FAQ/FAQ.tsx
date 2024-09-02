@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './anime.css';
-import Query from './Query';
-import Chat from './Chat';
+import Query from './query';
+import Chat from './chat';
 
 const FAQ = () => {
   interface FAQ {

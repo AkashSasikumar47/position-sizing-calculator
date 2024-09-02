@@ -72,11 +72,11 @@ const AboutEvent: React.FC = () => {
             <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
 
               <h2 className="text-2xl font-bold sm:text-3xl text-neutral-200">
-                Hey Lucia, Can you tell us more about E-VOLVE?
+                About E-VOLVE
               </h2>
 
               <p className="mt-4 text-justify text-neutral-300">
-                Sure! Here is some information about the event. At E-volve, you'll delve into the theoretical foundations of Generative AI, exploring its principles, methodologies, and the latest advancements in the field. This session is perfect for those looking to deepen their understanding of AI concepts and its applications.
+                At E-volve, you'll delve into the theoretical foundations of Generative AI, exploring its principles, methodologies, and the latest advancements in the field. This session is perfect for those looking to deepen their understanding of AI concepts and its applications.
               </p>
 
               <nav

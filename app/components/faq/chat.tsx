@@ -97,7 +97,7 @@ const Answer: React.FC<AnswerProps> = ({ showGenerating, answer }) => {
 
   return (
     <div className="flex flex-col items-start space-y-1 max-w-xs">
-      <div className="text-xs text-gray-500 ml-4">Lucia</div>
+      <div className="text-xs text-gray-500 ml-4">IEEE SRM</div>
       <div
         className="answer-content bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 text-sm md:text-base p-4 rounded-xl shadow-lg"
         style={{ maxHeight: "200px", minWidth: "200px" }}

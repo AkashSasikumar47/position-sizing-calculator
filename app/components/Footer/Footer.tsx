@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Socials from './socials';
 
 const Footer = () => {
     const { ref, inView } = useInView({
@@ -52,6 +53,8 @@ const Footer = () => {
                     </p>
                     <p className="font-sans font-base text-white text-xs sm:text-normal">© 2024 IEEE SRM. All rights reserved.</p>
                 </div>
+
+                <Socials />
             </motion.div>
         </footer>
     );
