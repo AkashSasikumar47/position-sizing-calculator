@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <Head>
         <title>E-VOLVE | IEEE SRMIST</title>
         <meta
