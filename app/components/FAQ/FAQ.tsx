@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import './anime.css';
 import Query from './Query';
 import Chat from './Chat';
@@ -11,7 +13,6 @@ const FAQ = () => {
   }
 
   const [FAQs] = useState<FAQ[]>([
-    //add second letter twice for the answer
     {
       no: 1,
       question: "How do I register for the E-volve event?",
@@ -50,9 +51,28 @@ const FAQ = () => {
     setSelectedFAQ(FAQ);
   };
 
+  const controls = useAnimation();
+  const { ref, inView } = useInView({
+    threshold: 0.2, // Adjust this value to control when the animation should trigger
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   return (
-    <section>
-      <div className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8">
+    <section ref={ref}>
+      <motion.div
+        className="max-w-screen-2xl bg-black mx-auto px-4 py-6 md:px-8 md:py-10 mb-8"
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+        }}
+      >
         <div className="mx-auto mb-10 items-center justify-center text-center">
           <h2 className="mb-4 md:mb-6 font-sans font-bold text-white text-2xl sm:text-4xl">
             Frequently Asked Questions
@@ -63,7 +83,15 @@ const FAQ = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center h-auto">
-          <div className="mockup-phone mx-auto">
+          <motion.div
+            className="mockup-phone mx-auto"
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, scale: 0.8 },
+              visible: { opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.8 } },
+            }}
+          >
             <div className="camera" />
             <div className="display">
               <div
@@ -77,9 +105,17 @@ const FAQ = () => {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mx-auto">
+          <motion.div
+            className="mx-auto"
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0, transition: { delay: 0.4, duration: 0.8 } },
+            }}
+          >
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-4 md:p-6">
               {FAQs.length === 0 ? (
                 <div className="flex items-center justify-center col-span-full mt-6">
@@ -95,9 +131,9 @@ const FAQ = () => {
                 ))
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
