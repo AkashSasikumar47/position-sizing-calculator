@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import './styles.css'
+import './speakerstyles.css'
 
 const SpeakerImage = () => {
     const [imageLoaded, setImageLoaded] = useState(false);

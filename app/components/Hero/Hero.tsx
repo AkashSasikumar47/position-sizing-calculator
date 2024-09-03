@@ -44,6 +44,27 @@ const Hero: React.FC = () => {
                 >
                     CONCEPTS TO CREATIONS
                 </motion.p>
+                <motion.div
+                    className="animate-bounce text-white mt-12"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.6, duration: 1 }}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-10 w-10 mx-auto"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={4}
+                            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        />
+                    </svg>
+                </motion.div>
             </div>
         </header>
     );
