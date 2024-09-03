@@ -45,16 +45,6 @@ const Hero: React.FC = () => {
                     CONCEPTS TO CREATIONS
                 </motion.p>
             </div>
-            <img
-                src="/assets/Img/splash.jpg"
-                alt="Splash effect"
-                className="splash"
-            />
-            <img
-                src="/assets/Img/planet.jpg"
-                alt="Planet effect"
-                className="planet"
-            />
         </header>
     );
 };
