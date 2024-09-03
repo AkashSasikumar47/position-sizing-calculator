@@ -4,7 +4,7 @@ import SpeakerImage from './speaker_image';
 import { useInView } from 'react-intersection-observer';
 import './styles.css';
 
-const Speaker: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationComplete }) => {
+const Speaker: React.FC<{ onGenerationComplete: () => void; }> = ({ onGenerationComplete }) => {
 
     const [showContent, setShowContent] = useState(false);
     const [fadeOut, setFadeOut] = useState(false);
@@ -28,7 +28,7 @@ const Speaker: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationCo
         }
     }, [inView, fadeOut]);
 
-    
+
     useEffect(() => {
         if (genComplete) {
             onGenerationComplete();
@@ -36,8 +36,8 @@ const Speaker: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationCo
     }, [genComplete]);
 
     return (
-        <section ref={ref} className='speakers-section'>
-            <div className="speakers-container mx-4">
+        <section ref={ref} className="speakers-section max-w-screen-2xl mx-auto px-4 py-6 md:px-8 md:py-10 mb-8">
+            <div className="speakers-container">
                 <div className="speakers-wrapper">
                     {!showContent && (
                         <div className={`transition-opacity duration-1000 ${fadeOut ? 'opacity-0' : 'opacity-100'} text-white text-2xl md:text-3xl tracking-wider font-bold text-center font-roboto`}>
@@ -48,7 +48,7 @@ const Speaker: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationCo
                     {showContent && (
                         <div className="flex flex-col-reverse lg:flex-row gap-6 items-center relative z-10">
                             <div className="flex-1 lg:mr-6">
-                                <SpeakerInfo onGenerationComplete={() => {setGenComplete(true)}}/>
+                                <SpeakerInfo onGenerationComplete={() => { setGenComplete(true) }} />
                             </div>
                             <div className="flex-shrink-0 lg:w-1/3">
                                 <SpeakerImage />

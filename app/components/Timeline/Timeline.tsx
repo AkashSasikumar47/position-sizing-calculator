@@ -90,7 +90,7 @@ const Timeline: React.FC<{onGenerationComplete: () => void;}> = ({ onGenerationC
 
   return (
     <section ref={inViewRef}>
-      <div className="gradient-border-container mx-auto max-w-5xl px-4 xl:px-0 py-5 lg:py-10">
+      <div className="gradient-border-container max-w-screen-2xl mx-auto px-4 py-6 md:px-8 md:py-10 mb-8">
         <div className="gradient-border-wrapper">
           <div ref={containerRef} className="gradient-border-content">
             {showGenerating ? (
