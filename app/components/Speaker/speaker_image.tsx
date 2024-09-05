@@ -21,7 +21,7 @@ const SpeakerImage = () => {
                 </div>
             ) : (
                 <Image
-                    src="/assets/Img/Lucia.jpg"
+                    src="/assets/Img/Yohan.png"
                     alt="Dr. Bernaurdshaw Neppolian"
                     width={500}
                     height={500}
