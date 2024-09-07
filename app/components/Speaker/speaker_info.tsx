@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react'
 const SpeakerInfo: React.FC<{ onGenerationComplete: () => void; }> = ({ onGenerationComplete }) => {
 
   //add the second letter twice for the generative content
-  const name = 'Yoohan Vergis Vinu';
-  const desig = 'Appplied AI Engineer';
-  const content = `Yoohan Vergis Vinu is a final-year Computer Science student at SRM Institute of Science and Technology, where his focus is on applied machine learning and artificial intelligence. He has gained practical experience through a research internship at Samsung R&D, where he worked on an advanced computer vision project. Currently, Yohan is an AI engineer at Moative, where he focuses on developing applied AI and LLM-based Software-as-a-Service (SaaS) products. He is also an undergraduate researcher at SRM currently working on vision-language models in human biometrics. As a public speaker and AI enthusiast, Yohan is passionate about sharing his knowledge of generative AI and its applications with aspiring students.
-  `;
+  const name = 'Seenthil Kumar J';
+  const desig = 'Asssistant Professor, KIT';
+  const content = `Seenthil Kumar J is an Assistant Professor at Kalaignarkarunanidhi Institute of Technology, Coimbatore, with a robust passion for research in the fields of Deep Learning, Natural Language Processing, Machine Learning, and Data Mining. He is also an Intel-certified instructor specializing in Quantum Machine Learning. With years of experience in Computer Science and Engineering, Senthil has a proven track record in higher education, guiding students and researchers through cutting-edge technologies. His commitment to solving complex problems and his insatiable thirst for knowledge drive his work in AI. Senthil is enthusiastic about sharing his expertise with students, aiming to inspire the next generation of engineers.`;
 
   const [nameCompleted, setNameCompleted] = useState(false);
   const [desigCompleted, setDesigCompleted] = useState(false);

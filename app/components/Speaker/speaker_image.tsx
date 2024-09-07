@@ -21,8 +21,8 @@ const SpeakerImage = () => {
                 </div>
             ) : (
                 <Image
-                    src="/assets/Img/Yohan.png"
-                    alt="Dr. Bernaurdshaw Neppolian"
+                    src="/assets/Img/senthil_kumar_j.jpeg"
+                    alt="Senthil Kumar J"
                     width={500}
                     height={500}
                     className='profile-image w-full h-auto rounded-lg object-cover transition-transform duration-300 ease-in-out hover:scale-105'
