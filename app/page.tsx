@@ -53,14 +53,8 @@ const HomePage: React.FC = () => {
     <div className="bg-black">
       <Head>
         <title>E-VOLVE | IEEE SRMIST</title>
-        <meta
-          name="description"
-          content="Explore the future of artificial intelligence with hands-on experience in Generative AI. Join the GenAI Workshop at IEEE SRMIST to learn, innovate, and create AI-powered solutions."
-        />
-        <meta
-          name="keywords"
-          content="E-VOLVE, GenAI Workshop, IEEE SRMIST, artificial intelligence, generative AI, innovation, technology, hands-on workshop"
-        />
+        <meta name="description" content="Explore the future of artificial intelligence with hands-on experience in Generative AI. Join the GenAI Workshop at IEEE SRMIST to learn, innovate, and create AI-powered solutions." />
+        <meta name="keywords" content="E-VOLVE, GenAI Workshop, IEEE SRMIST, artificial intelligence, generative AI, innovation, technology, hands-on workshop" />
         <link rel="icon" href="/favicon.ico?v=2" />
       </Head>
 
